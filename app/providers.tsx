@@ -24,8 +24,8 @@ const { wallets } = getDefaultWallets();
 // initialize and destructure wallets object
 
 const config = getDefaultConfig({
-  appName: 'MY_APP', // Name your app
-  projectId: "WALLETCONNECT_PROJECT_ID", // Enter your WalletConnect Project ID here
+  appName: 'BLOCKCMD_INSPECT', // Name your app
+  projectId: "e0e485365ce5d5ab04d3dd795f627315", // Enter your WalletConnect Project ID here
   wallets: [
     ...wallets,
     {
@@ -36,7 +36,8 @@ const config = getDefaultConfig({
   chains: [
     baseSepolia,
     arbitrumSepolia,
-    optimismSepolia
+    optimismSepolia,
+    klaytnBaobab
   ],
   transports: {
     [baseSepolia.id]: http('https://rpc.ankr.com/base_sepolia'), 
