@@ -1,10 +1,16 @@
+import InputABI from '@/components/input-abi';
+import MobileWarning from '@/components/mobile-warning';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Home() {
 
   return (
-    <div className="flex flex-col gap-8 items-center justify-center py-12 px-4 p-48:lg">
-      <ConnectButton />
-    </div>
+    <main className="flex flex-col gap-8 items-center justify-center py-12 px-4 lg:p-36">
+      <div className="hidden lg:flex lg:flex-col lg:gap-12 max-w-3xl">
+        <ConnectButton />
+        <InputABI />
+      </div>
+      <MobileWarning />
+    </main>
   );
 }
