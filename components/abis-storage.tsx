@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { del, get, set } from 'idb-keyval'
 
-export default function InputABI() {
+export default function AbiStorage() {
   const [abi, setAbi] = useState('')
   const [abiName, setAbiName] = useState('')
   const [savedABIs, setSavedABIs] = useState<string[]>([])
@@ -40,6 +40,7 @@ export default function InputABI() {
         placeholder="paste in a contract ABI"
         value={abi}
         onChange={handleInputABIChange}
+        className="h-96 w-full"
       />
       <Input 
         placeholder="set abi name" 
