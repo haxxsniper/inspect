@@ -15,7 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { set } from "idb-keyval";
+import { set, get } from "idb-keyval";
 import { Loader2, Check } from "lucide-react";
 
 interface FunctionObject {
@@ -28,13 +28,19 @@ interface FunctionObject {
 
 export default function FunctionAction({ functionObjects }: { functionObjects: any }) {
   const searchParams = useSearchParams();
+  const abiName = searchParams.get("abiName");
   const functionName = searchParams.get("functionName");
   const functionIndex = searchParams.get("functionIndex");
+  const [abi, setAbi] = useState<any>([]);
   const [fetch, setFetch] = useState<boolean>(false);
   const [result, setResult] = useState<any>("n/a");
   const [args, setArgs] = useState<any>([]);
 
-  //  0x0614c46364aE6a98938d551bCa8d0CCA46e86576
+  useEffect(() => {
+    if (abiName) {
+      get(abiName).then((val) => setAbi(JSON.parse(val)))
+    }
+  }, [abiName]);
 
   useEffect(() => {
     setArgs([]);
@@ -48,7 +54,7 @@ export default function FunctionAction({ functionObjects }: { functionObjects: a
     isSuccess: readSuccess,
   } = useReadContract({
     address: "0xfbafe784a4ee4fb559636cec7f760158ea90f86f",
-    abi: zxstimAbi,
+    abi: abi,
     functionName: functionName as
       | "symbol"
       | "allowance"
@@ -82,7 +88,7 @@ export default function FunctionAction({ functionObjects }: { functionObjects: a
     e.preventDefault();
     writeContract({
       address: "0xfbafe784a4ee4fb559636cec7f760158ea90f86f",
-      abi: zxstimAbi,
+      abi: abi,
       functionName: functionName as
         | "approve"
         | "burn"

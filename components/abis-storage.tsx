@@ -54,7 +54,7 @@ export default function AbiStorage() {
       <h2>Current ABIs</h2>
       <div className="flex flex-row gap-4">
         {savedABIs.map((abiName, index) => (
-          <Link key={index} href={`?abiName=${abiName}`}>{abiName}</Link>
+          <Link scroll={false} key={index} href={`?abiName=${abiName}`}>{abiName}</Link>
         ))}
       </div>
     </div>
