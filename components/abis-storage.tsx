@@ -5,8 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { del, get, set } from 'idb-keyval'
+import { useSearchParams } from "next/navigation"
+import Link from "next/link"
 
 export default function AbiStorage() {
+  const searchParams = useSearchParams()
   const [abi, setAbi] = useState('')
   const [abiName, setAbiName] = useState('')
   const [savedABIs, setSavedABIs] = useState<string[]>([])
@@ -49,11 +52,11 @@ export default function AbiStorage() {
       />
       <Button onClick={saveABI}>Save ABI</Button>
       <h2>Current ABIs</h2>
-      <ul>
+      <div>
         {savedABIs.map((abiName, index) => (
-          <li key={index}>{abiName}</li>
+          <Link key={index} href={`?abiName=${abiName}`}>{abiName}</Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

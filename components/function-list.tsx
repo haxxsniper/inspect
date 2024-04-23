@@ -8,13 +8,14 @@ export default function FunctionList({ functionObject }: { functionObject: any }
 
   const searchParams = useSearchParams()
   const functionName = searchParams.get('functionName')
+  const abiName = searchParams.get('abiName')
 
   return (
     <div className="flex flex-col gap-2 w-1/3">
       {
         functionObject.map((functionObject: any, index: number) => (
           <Link
-            href={`?functionIndex=${index}&functionName=${functionObject.name}`}  
+            href={`?abiName=${abiName}&functionIndex=${index}&functionName=${functionObject.name}`}  
             key={index} 
             className={`flex flex-col ${functionName !== null && functionName === functionObject.name ? "text-background bg-foreground" : "bg-background text-foreground"} gap-2 border-2 p-2 rounded-md`}
             scroll={false}

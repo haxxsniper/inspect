@@ -5,6 +5,7 @@ import FunctionList from "./function-list"
 
 
 export default function FunctionDashboard({ abi }: { abi: any }) {
+  
   const functionObject = abi.filter((functionObject: any) => functionObject.type === 'function')
 
   return (
