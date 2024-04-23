@@ -38,7 +38,7 @@ export default function AbiStorage() {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 my-4">
       <Textarea
         placeholder="paste in a contract ABI"
         value={abi}
@@ -52,7 +52,7 @@ export default function AbiStorage() {
       />
       <Button onClick={saveABI}>Save ABI</Button>
       <h2>Current ABIs</h2>
-      <div>
+      <div className="flex flex-row gap-4">
         {savedABIs.map((abiName, index) => (
           <Link key={index} href={`?abiName=${abiName}`}>{abiName}</Link>
         ))}
