@@ -40,10 +40,10 @@ const config = getDefaultConfig({
     klaytnBaobab
   ],
   transports: {
-    [baseSepolia.id]: http('https://rpc.ankr.com/base_sepolia'), 
+    [baseSepolia.id]: http('https://rpc.ankr.com/base_sepolia'),
     [arbitrumSepolia.id]: http('https://rpc.ankr.com/arbitrum_sepolia'),
     [optimismSepolia.id]: http('https://rpc.ankr.com/optimism_sepolia'),
-    [klaytnBaobab.id]: http('https://rpc.ankr.com/klaytn_testnet'), 
+    [klaytnBaobab.id]: http('https://rpc.ankr.com/klaytn_testnet'),
   },
   ssr: true, // Because it is Nextjs's App router, you need to declare ssr as true
 });
