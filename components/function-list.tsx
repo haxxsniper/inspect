@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 
-export default function FunctionList({ functionObject }: { functionObject: any }) {
+export default function FunctionList({ functionObjects }: { functionObjects: any }) {
 
   const searchParams = useSearchParams()
   const functionName = searchParams.get('functionName')
@@ -13,7 +13,7 @@ export default function FunctionList({ functionObject }: { functionObject: any }
   return (
     <div className="flex flex-col gap-2 w-1/3">
       {
-        functionObject.map((functionObject: any, index: number) => (
+        functionObjects.map((functionObject: any, index: number) => (
           <Link
             href={`?abiName=${abiName}&functionIndex=${index}&functionName=${functionObject.name}`}  
             key={index} 

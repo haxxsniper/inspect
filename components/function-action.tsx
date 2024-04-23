@@ -26,13 +26,10 @@ interface FunctionObject {
   type: string;
 }
 
-export default function FunctionAction() {
+export default function FunctionAction({ functionObjects }: { functionObjects: any }) {
   const searchParams = useSearchParams();
   const functionName = searchParams.get("functionName");
   const functionIndex = searchParams.get("functionIndex");
-  const functionObjects: FunctionObject[] = zxstimAbi.filter(
-    (functionObject) => functionObject.type === "function"
-  ) as FunctionObject[];
   const [fetch, setFetch] = useState<boolean>(false);
   const [result, setResult] = useState<any>("n/a");
   const [args, setArgs] = useState<any>([]);
