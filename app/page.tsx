@@ -1,5 +1,6 @@
 import AbiStorage from "@/components/abis-storage";
-
+import FunctionDashboard from "@/components/function-dashboard";
+import { zxstimAbi } from "@/components/abis";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div>
       <ConnectButton />
       <AbiStorage />
+      <FunctionDashboard abi={zxstimAbi}/>
     </div>
   );
 }
