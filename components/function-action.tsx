@@ -18,13 +18,6 @@ import { Label } from "@/components/ui/label";
 import { set, get } from "idb-keyval";
 import { Loader2, Check } from "lucide-react";
 
-interface FunctionObject {
-  name: string;
-  inputs: any;
-  outputs: any;
-  stateMutability: string;
-  type: string;
-}
 
 export default function FunctionAction({ functionObjects }: { functionObjects: any }) {
   const searchParams = useSearchParams();
@@ -84,25 +77,25 @@ export default function FunctionAction({ functionObjects }: { functionObjects: a
     writeContract,
   } = useWriteContract();
 
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    writeContract({
-      address: "0xfbafe784a4ee4fb559636cec7f760158ea90f86f",
-      abi: abi,
-      functionName: functionName as
-        | "approve"
-        | "burn"
-        | "burnFrom"
-        | "mint"
-        | "pause"
-        | "renounceOwnership"
-        | "transfer"
-        | "transferFrom"
-        | "transferOwnership"
-        | "unpause",
-      args: args,
-    });
-  }
+  // async function submit(e: React.FormEvent<HTMLFormElement>) {
+  //   e.preventDefault();
+  //   writeContract({
+  //     address: "0xfbafe784a4ee4fb559636cec7f760158ea90f86f",
+  //     abi: abi,
+  //     functionName: functionName as
+  //       | "approve"
+  //       | "burn"
+  //       | "burnFrom"
+  //       | "mint"
+  //       | "pause"
+  //       | "renounceOwnership"
+  //       | "transfer"
+  //       | "transferFrom"
+  //       | "transferOwnership"
+  //       | "unpause",
+  //     args: args,
+  //   });
+  // }
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
@@ -213,7 +206,7 @@ export default function FunctionAction({ functionObjects }: { functionObjects: a
                     onClick={() =>
                       writeContract({
                         address: "0xfbafe784a4ee4fb559636cec7f760158ea90f86f",
-                        abi: zxstimAbi,
+                        abi: abi,
                         functionName: functionName as
                           | "approve"
                           | "burn"
