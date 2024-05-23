@@ -24,6 +24,7 @@ export default function FunctionAction({ functionObjects }: { functionObjects: a
   const abiName = searchParams.get("abiName");
   const functionName = searchParams.get("functionName");
   const functionIndex = searchParams.get("functionIndex");
+  const contractAddress = searchParams.get("contractAddress");
   const [abi, setAbi] = useState<any>([]);
   const [fetch, setFetch] = useState<boolean>(false);
   const [result, setResult] = useState<any>("n/a");
@@ -46,18 +47,9 @@ export default function FunctionAction({ functionObjects }: { functionObjects: a
     isPending: readPending,
     isSuccess: readSuccess,
   } = useReadContract({
-    address: "0xfbafe784a4ee4fb559636cec7f760158ea90f86f",
+    address: contractAddress as `0x${string}`,
     abi: abi,
-    functionName: functionName as
-      | "symbol"
-      | "allowance"
-      | "owner"
-      | "balanceOf"
-      | "decimals"
-      | "name"
-      | "paused"
-      | "totalSupply"
-      | undefined,
+    functionName: functionName,
     query: {
       enabled: fetch,
     },
@@ -205,19 +197,9 @@ export default function FunctionAction({ functionObjects }: { functionObjects: a
                     disabled={writePending}
                     onClick={() =>
                       writeContract({
-                        address: "0xfbafe784a4ee4fb559636cec7f760158ea90f86f",
+                        address: contractAddress as `0x${string}`,
                         abi: abi,
-                        functionName: functionName as
-                          | "approve"
-                          | "burn"
-                          | "burnFrom"
-                          | "mint"
-                          | "pause"
-                          | "renounceOwnership"
-                          | "transfer"
-                          | "transferFrom"
-                          | "transferOwnership"
-                          | "unpause",
+                        functionName: functionName,
                         args: args,
                       })
                     }

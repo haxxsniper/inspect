@@ -7,6 +7,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useSearchParams } from "next/navigation"
 import { del, get, set } from 'idb-keyval'
 import { useEffect, useState } from "react";
+import ContractAddress from "@/components/contract-address";
 
 export default function Home() {
   const searchParams = useSearchParams()
@@ -23,6 +24,7 @@ export default function Home() {
     <div>
       <ConnectButton />
       <AbiStorage />
+      <ContractAddress />
       {
         abi && (
           <FunctionDashboard abi={abi}/>
