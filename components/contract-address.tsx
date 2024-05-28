@@ -21,10 +21,6 @@ export default function ContractAddress() {
     }
   }, [savedContractAddresses]);
 
-  useEffect(() => {
-    get(contractAddressName).then((val) => setContractAddress(val))
-  }, [contractAddressName, searchParams])
-
   function handleInputContractAddressChange(e: React.ChangeEvent<HTMLInputElement>) {
     setContractAddress(e.target.value)
   }
